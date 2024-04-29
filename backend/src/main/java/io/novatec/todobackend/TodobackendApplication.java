@@ -62,7 +62,7 @@ public class TodobackendApplication {
 		return "fixed!";
 	}
 
-	@GetMapping("/todos/")
+	@GetMapping("/todos")
 	List<String> getTodos(){
 
 		logger.info(cfInstance);

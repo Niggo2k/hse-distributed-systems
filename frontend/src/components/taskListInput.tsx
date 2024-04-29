@@ -23,7 +23,7 @@ export default function TaskListInput(){
                 style={{backgroundImage: 'linear-gradient(to left top, rgb(31, 28, 44), rgb(146, 141, 171))'}}
                 type="submit"
             >
-                <div className="px-6 py-1.5 w-full flex h-full font-semibold text-base bg-[##020817cc]/90 rounded-full group-hover:bg-background/80 items-center">
+                <div className="px-6 py-1.5 w-full flex h-full font-semibold text-base bg-slate-800/90 rounded-full group-hover:bg-slate-800/80 items-center">
                     Add Task
                 </div>
             </button>
