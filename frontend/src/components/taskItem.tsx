@@ -1,3 +1,4 @@
+import { Trash } from "lucide-react";
 import Image from "next/image";
 
 interface TaskItemProps {
@@ -7,12 +8,12 @@ interface TaskItemProps {
 
 export default function TaskItem({ task, onDelete }: TaskItemProps) {
     return (
-        <div className="flex justify-between items-center gap-x-3 m-2 p-2 px-4 border border-gray-300 rounded-lg">
+        <div className="flex justify-between items-center gap-x-3 p-4">
             <p className="flex-1">
                 {task}
             </p>
-            <button onClick={onDelete} className="bg-slate-800 text-white p-2 px-4 rounded-full">
-                Delete Task
+            <button onClick={onDelete} className="p-3 rounded-full transition duration-300 bg-transparent text-red-500 hover:bg-red-500 hover:text-white">
+                <Trash size={18} />
             </button>
         </div>
     );
