@@ -54,15 +54,14 @@ Die Anwendung kommuniziert mit einer RESTful API, die folgende Endpunkte hat:
 ## Quick Start with Docker
 
 ### Clone the repository:
-```bash
-git clone [repository-url]
+    ```bash
+    git clone [URL-des-Repositories]
 
 ### Start the application:
 Navigate to the root directory of the project and run:
-
-```bash
-docker-compose up
-This command builds and starts the frontend and backend services in containers.
+    ```bash
+    docker-compose up
+    This command builds and starts the frontend and backend services in containers.
 
 ###Access the application:
 Open http://localhost:3000 in your browser.
