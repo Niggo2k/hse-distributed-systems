@@ -56,47 +56,47 @@ Die Anwendung kommuniziert mit einer RESTful API, die folgende Endpunkte hat:
 ### Clone the repository:
 ```bash
 git clone [repository-url]
-Start the application:
+
+### Start the application:
 Navigate to the root directory of the project and run:
 
 ```bash
 docker-compose up
 This command builds and starts the frontend and backend services in containers.
 
-Access the application:
+###Access the application:
 Open http://localhost:3000 in your browser.
 
-Shutdown the application:
+###Shutdown the application:
 ```bash
 docker-compose down
 
 ##Manual Setup
 #Backend Setup
-Clone the repository:
+###Clone the repository:
 ```bash
 git clone [repository-url]
 
-Install dependencies:
+###Install dependencies:
 ```bash
 npm install
 # or pnpm install, yarn install, bun install
-Database Migration:
+### Database Migration:
 ```bash
 npx prisma migrate deploy
-Start the server:
+### Start the server:
 ```bash
 npm run dev
 # or pnpm run dev, yarn run dev, bun run dev
-Frontend Setup
-Environment Setup:
+## Frontend Setup
+### Environment Setup:
 Create a .env file in the root of the frontend directory:
 
-plaintext
-Code kopieren
 API_URL=http://localhost:3001
+
 Adjust the API_URL value if your backend is running on a different port or host.
 
-Install dependencies:
+### Install dependencies:
 ```bash
 npm install
 # or pnpm install, yarn install, bun install
@@ -104,20 +104,23 @@ Start the frontend:
 ```bash
 npm start
 # or pnpm start, yarn start, bun start
-Running with Docker Individually
-Backend
-Build the Docker image:
+
+#Running with Docker Individually
+#Backend
+###Build the Docker image:
 ```bash
 docker build -t todo-ss24-backend .
-Run the container:
+###Run the container:
 ```bash
 docker run -d -p 3001:3000 -e PORT=3000 todo-ss24-backend
-Frontend
-Build the Docker image:
+##Frontend
+###Build the Docker image:
 ```bash
 docker build -t todo-ss24-frontend .
-Run the container:
+###Run the container:
 Make sure to replace API_URL with the address where your backend service is available.
+```bash
+docker run -d -p 3000:3000 -e API_URL='http://localhost:3001' todo-ss24-frontend
 
 ## Sicherheitshinweise
 - Achten Sie darauf, Umgebungsvariablen für API-Endpunkte zu verwenden und diese nicht im Code zu hartcodieren.
