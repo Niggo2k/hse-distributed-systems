@@ -5,7 +5,7 @@ const nextConfig = {
 	  return [
 		{
 		  source: '/api/:path*',
-		  destination: 'http://localhost:8080/:path*',
+		  destination: 'http://todobackend-springboot:8080/:path*',
 		},
 	  ]
 	},
