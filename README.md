@@ -17,6 +17,7 @@ Die To-Do-App ist eine einfache, benutzerfreundliche Webanwendung, entwickelt mi
 2. **Installation der Abhängigkeiten:**
     ```bash
         npm install
+    ```
 2. **Starten der Anwendung:**
     ```bash
         npm run dev
