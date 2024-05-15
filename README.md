@@ -1,132 +1,87 @@
-# Dokumentation für die To-Do-App
+# Todo List Application Documentation
 
-## Überblick
-Die To-Do-App ist eine einfache, benutzerfreundliche Webanwendung, entwickelt mit Next.js und Tailwind CSS. Sie ermöglicht es Benutzern, ihre Aufgaben effizient zu verwalten, indem sie neue To-Dos hinzufügen, bestehende anzeigen und löschen können.
+This repository contains the frontend code for a Todo List application built with React. The application allows users to add, delete, and manage tasks.
+## Prerequisites
+   Docker installed on your machine
+   
+## Getting Started
 
-## Technologien
-- **Next.js**: Als React-Framework verwendet für serverseitiges Rendering und statische Website-Generierung.
-- **Tailwind CSS**: Für das Styling der Komponenten.
-- **Axios**: Für HTTP-Anfragen, um mit der Backend-API zu interagieren.
-- **Lucide Icons**: Zur visuellen Darstellung der Icons in der Anwendung.
+To get started with the project, follow these steps:
 
-## Setup und Installation
-1. **Klonen des Repositories:**
+1. Clone the repository to your local machine:
+
    ```bash
-   git clone [URL-des-Repositories]
-   cd [Projektordner]
-2. **Installation der Abhängigkeiten:**
-    ```bash
-        npm install
-    ```
-2. **Starten der Anwendung:**
-    ```bash
-        npm run dev
+   git clone https://github.com/Niggo2k/hse-distributed-systems.git
+   ```
 
-Die Anwendung wird standardmäßig unter http://localhost:3000 gehostet.
+2. Navigate to the directory:
 
-## Hauptkomponenten
+   ```bash
+   cd hse-distributed-systems
+   ```
 
-### Home Page (`pages/index.tsx`):
-- **Zustandsmanagement**: Verwendung von `useState` für die Verwaltung des Zustands der To-Dos und des Ladezustandes.
-- **Effekte**: `useEffect` zum Abrufen der To-Dos beim Initialladen der Komponente.
-- **HTTP-Anfragen**: Einsatz von `axios` für GET und POST Anfragen, um To-Dos zu laden, hinzuzufügen und zu löschen.
+3. Start the docker compose:
 
-### TaskItem (`components/TaskItem.tsx`):
-- **Props**: Nimmt `task` (die Aufgabe als String) und `onDelete` (Funktion zum Löschen der Aufgabe) entgegen.
-- **Darstellung**: Zeigt die Aufgabe an und ermöglicht das Löschen durch einen Button mit einem Mülleimer-Icon.
+   ```bash
+   docker compose up
+   ```
 
-### Root Layout (`layouts/RootLayout.tsx`):
-- **Global Styles**: Importiert die Google-Schriftart `Inter` und definiert globale Hintergrundstile.
+## Usage
 
-## API-Integration
-Die Anwendung kommuniziert mit einer RESTful API, die folgende Endpunkte hat:
+### Dependencies
 
-- **GET /api/todos/**: Abrufen aller To-Dos.
-- **POST /api/todos/{todo}**: Hinzufügen eines neuen To-Dos.
-- **DELETE /api/todos/{todo}**: Löschen eines To-Dos.
+This project relies on the following dependencies:
 
-# Getting Started
+- Axios: Used for making HTTP requests to the backend API.
+- React: JavaScript library for building user interfaces.
+- Lucide-React: Provides a set of SVG icons for use in the application.
+- Springboot: Used for the Backend of the REST API
 
-## Requirements
 
-- Docker installed on your machine (if using Docker)
-- Node.js installed (if not using Docker)
+## Frontend
 
-## Quick Start with Docker
+### Components
 
-### Clone the repository:
-    ```bash
-    git clone [URL-des-Repositories]
+##### Home
 
-### Start the application:
-Navigate to the root directory of the project and run:
-    ```bash
-    docker-compose up
-    This command builds and starts the frontend and backend services in containers.
+The `Home` component is the main component of the application. It renders a Todo List interface where users can view, add, and delete tasks.
 
-###Access the application:
-Open http://localhost:3000 in your browser.
+##### TaskItem
 
-###Shutdown the application:
-```bash
-docker-compose down
+The `TaskItem` component is responsible for rendering individual tasks in the Todo List. It displays the task text and provides a delete button for removing the task.
 
-##Manual Setup
-#Backend Setup
-###Clone the repository:
-```bash
-git clone [repository-url]
+### Functionality
 
-###Install dependencies:
-```bash
-npm install
-# or pnpm install, yarn install, bun install
-### Database Migration:
-```bash
-npx prisma migrate deploy
-### Start the server:
-```bash
-npm run dev
-# or pnpm run dev, yarn run dev, bun run dev
-## Frontend Setup
-### Environment Setup:
-Create a .env file in the root of the frontend directory:
+#### Fetching Tasks
 
-API_URL=http://localhost:3001
+Tasks are fetched from the backend API using the `fetchTasks` function. This function is called when the component mounts using the `useEffect` hook.
 
-Adjust the API_URL value if your backend is running on a different port or host.
+#### Adding Tasks
 
-### Install dependencies:
-```bash
-npm install
-# or pnpm install, yarn install, bun install
-Start the frontend:
-```bash
-npm start
-# or pnpm start, yarn start, bun start
+New tasks can be added using the input field in the form. When the user submits the form, the `handleAddTask` function is called. This function sends a POST request to the backend API to add the new task.
 
-#Running with Docker Individually
-#Backend
-###Build the Docker image:
-```bash
-docker build -t todo-ss24-backend .
-###Run the container:
-```bash
-docker run -d -p 3001:3000 -e PORT=3000 todo-ss24-backend
-##Frontend
-###Build the Docker image:
-```bash
-docker build -t todo-ss24-frontend .
-###Run the container:
-Make sure to replace API_URL with the address where your backend service is available.
-```bash
-docker run -d -p 3000:3000 -e API_URL='http://localhost:3001' todo-ss24-frontend
+#### Deleting Tasks
 
-## Sicherheitshinweise
-- Achten Sie darauf, Umgebungsvariablen für API-Endpunkte zu verwenden und diese nicht im Code zu hartcodieren.
-- Validierung der Eingaben, um XSS- und SQL-Injection-Angriffe zu vermeiden.
+Tasks can be deleted by clicking the delete button next to each task. The `handleDeleteTask` function is called when the delete button is clicked. This function sends a DELETE request to the backend API to remove the task.
 
-## Weiterführende Schritte
-- **Erweiterung der Funktionalität**: Hinzufügen von Authentifizierung für Benutzer und die Möglichkeit, To-Dos zu bearbeiten.
-- **Optimierung der Benutzeroberfläche**: Verbesserung des Layouts und der Responsivität für verschiedene Geräte.
 
+## Backend
+
+## Endpoints
+
+### GET /todos
+
+Returns a list of all tasks.
+
+### POST /todos/{todo}
+
+Adds a new task to the list.
+
+### DELETE /todos/{todo}
+
+Removes a task from the list.
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
