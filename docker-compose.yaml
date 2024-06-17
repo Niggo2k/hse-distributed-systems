@@ -14,7 +14,7 @@ services:
       - todonet
 
   todobackend-springboot:
-    image: maeddes/todobackend-springboot
+    image: maeddes/todobackend-springboot:hse24
     build:
       context: ./backend
       dockerfile: Dockerfile

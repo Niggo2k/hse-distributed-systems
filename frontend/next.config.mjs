@@ -4,6 +4,10 @@ const nextConfig = {
 	async rewrites() {
 	  return [
 		{
+		  source: '/api/todos/',
+		  destination: 'http://todobackend-springboot:8080/todos/',
+		},
+		{
 		  source: '/api/:path*',
 		  destination: 'http://todobackend-springboot:8080/:path*',
 		},
