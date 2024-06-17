@@ -5,11 +5,11 @@ const nextConfig = {
 	  return [
 		{
 		  source: '/api/todos/',
-		  destination: 'http://todobackend-springboot:8080/todos/',
+		  destination: `${process.env.BACKEND_API}/todos/`,
 		},
 		{
 		  source: '/api/:path*',
-		  destination: 'http://todobackend-springboot:8080/:path*',
+		  destination: `${process.env.BACKEND_API}/:path*`,
 		},
 	  ]
 	},
