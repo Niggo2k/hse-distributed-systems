@@ -8,8 +8,12 @@ const nextConfig = {
 		  destination: `${process.env.BACKEND_API}/todos/`,
 		},
 		{
-		  source: '/api/:path*',
-		  destination: `${process.env.BACKEND_API}/:path*`,
+		  source: '/api/todos',
+		  destination: `${process.env.BACKEND_API}/todos/`,
+		},
+		{
+		  source: '/api/todos/:path*',
+		  destination: `${process.env.BACKEND_API}/todos/:path*`,
 		},
 	  ]
 	},

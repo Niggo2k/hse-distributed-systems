@@ -31,6 +31,10 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     restart: always
+    depends_on:
+      - todobackend-springboot
+    environment:
+      - BACKEND_API=http://localhost:8080
     ports:
       - 3000:3000
     networks:

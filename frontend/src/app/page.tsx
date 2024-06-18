@@ -8,6 +8,7 @@ export default function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState('');
   const [loading, setLoading] = useState(true);
+  const baseAPI = "/api/todos";
 
   useEffect(() => {
     fetchTasks();
@@ -16,7 +17,7 @@ export default function Home() {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`/api/todos`);
+      const response = await axios.get(`${baseAPI}/`);
       setTasks(response.data);
     } catch (error) {
       console.error('Failed to fetch tasks', error);
@@ -28,7 +29,7 @@ export default function Home() {
       e.preventDefault()
       const submitData = {newTask}
       try {
-          await axios.post(`/api/todos/${newTask}`, submitData)
+          await axios.post(`${baseAPI}/${newTask}`, submitData)
       } catch (error) {
           console.log(error)
       }
@@ -38,7 +39,7 @@ export default function Home() {
 
   const handleDeleteTask = async (task: string) => {
     try {
-      await axios.delete(`/api/todos/${encodeURIComponent(task)}`);
+      await axios.delete(`${baseAPI}/${encodeURIComponent(task)}`);
       fetchTasks();  // Aktualisieren der Aufgabenliste nach dem Löschen
     } catch (error) {
       console.error('Failed to delete task', error);
