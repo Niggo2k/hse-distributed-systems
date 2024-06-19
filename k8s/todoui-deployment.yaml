@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: todoui
+  name: todoui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoui
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: todoui
+        tier: frontend
+    spec:
+      containers:
+      - image: niggo2k/hse24-todo-frontend:v1.1
+        env:
+        - name: BACKEND_API
+          value: "http://todobackend:8080"
+        name: lab
+        resources: {}
+status: {}
